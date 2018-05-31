@@ -1,4 +1,4 @@
-# vue-gtiment
+# vue-choose-plug
 
 > A Vue.js project
 

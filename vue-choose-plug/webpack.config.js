@@ -2,16 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // entry: './src/main.js',
-  entry: './src/lib/index.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    // filename: 'build.js'
-    filename: 'choose.js',
-    library: 'Choose',
-    libraryTarget: 'umd', //libraryTarget会生成不同umd的代码,可以只是commonjs标准的，也可以是指amd标准的，也可以只是通过script标签引入的。 
-    umdNamedDefine: true 
+    filename: 'build.js'
   },
   module: {
     rules: [
