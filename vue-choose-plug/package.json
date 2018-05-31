@@ -4,7 +4,12 @@
   "version": "1.0.0",
   "author": "hexiuhui <hexiuhui@tvflnet.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "main": "dist/vue-choose-plug.js",
+  "repository": {
+    "type": "git", 
+    "url": "https://github.com/hexiuhui/vue-choose.git" 
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
