@@ -566,7 +566,7 @@ li{
     font-size: 14px;
     line-height: 10px;
     border-radius: 5px;
-    border: 2px #ccc dashed;
+    border: 2px #00f dashed;
     margin: 10px 0 10px 10px !important;
     padding: 11px  !important;
     position: relative;
@@ -574,7 +574,7 @@ li{
     cursor:pointer;
 }
 .isinit{border-style: dashed;}
-.isopen{background-color: #E0E0E0}
+.isopen{background-color: #05f}
 .choosechild{border-style: solid;}
 /*选中确认的样式*/
 a{margin-left: -20px;margin-bottom: -22px; display: inline-block; width: 6px;height:2px; background: #fff!important;line-height: 0;font-size:0;vertical-align: middle;transform: rotate(45deg);}
@@ -582,7 +582,7 @@ a:after{content:'/';display:block;width: 12px;height:2px; background: #fff;trans
 .isself{
     width: 0;
     height: 0;
-    border-bottom: 21px solid #666;
+    border-bottom: 21px solid #01f;
     border-left: 21px solid transparent;
     position: absolute;
     bottom: 0;
