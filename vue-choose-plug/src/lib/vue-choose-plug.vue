@@ -1,5 +1,5 @@
 <template>
-  <div id="Dimension" v-if="myshow">
+  <div id="Dimension" v-show="myshow" @click.stop.prevent='sendMsg'>
       <div>
             <ul>
                 <li 
@@ -73,7 +73,11 @@ export default {
     props: {
         myshow: {
             type: Boolean,
-            default: false
+            default: true
+        },
+        url: {
+            type: String,
+            default: ''
         }
     },
     data () {
@@ -84,13 +88,12 @@ export default {
             myModel : 0,
             test:0,
             show2 : false,
-            show3 : false,
+            show3 : false
             // url:"@/../static/data/dimensionNew.json"
-            url : 'https://dev-web-services.tvflnet.com/dimension/0403000'
         }
     },
     mounted () {
-    /**读取json */
+        /*axios获取json
         this.$http.get (this.url)
         .then ( ( res ) => {
             console.log(res.data.data.content)
@@ -99,8 +102,33 @@ export default {
         .catch ( function ( error ) {
             console.log ( error );
         })
+        */
+
+       //ajax获取json
+       this.getData(this.url)
     },
     methods:{
+        getData(url){
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET',url,true);
+            let that = this;
+            xhr.onload = function (){
+                if(this.status === 200){
+                    that.myData = JSON.parse(this.responseText).data.content;
+                }else{
+                    console.log('数据获取失败')
+                }
+            }
+            xhr.send();
+        },
+        sendMsg(event){
+            let sp = document.getElementById('Dimension');
+            if(sp){
+                if(sp != event.target){
+                    this.$emit('connect',this.choosemsg)
+                }
+            }
+        },
     //选择第一层
         selectedFirst(item,index){
             let status = item.myClass
@@ -160,10 +188,8 @@ export default {
                 })
                 if (status.isopen===true&&this.show3===true && status.choosechild === false) {
                     this.changeStyle4(item,0);
-                    console.log(44)
                 }else if (status.isopen===false&&this.show3===false && status.choosechild === true) {
                     this.changeStyle6(item,0);
-                    console.log(66)
                 }else if (status.isopen === true && this.show3 === true && status.choosechild === true) {
                     this.changeStyle7(item,0);
                 }else{
@@ -171,7 +197,6 @@ export default {
                         this.changeStyle6(item,0);
                     }else{
                         this.changeStyle3(item,0);
-                        console.log(33)
                     }
                 //如果没有子节点，则不展开
                     if (!this.myModel) {
@@ -362,9 +387,9 @@ export default {
     /**删除已选择 */
     deletemsg:function(item){
         this.choosemsg.forEach((value, index, array) => {
-            if((value.level === 1 && value.firstId ===item.firstId)||
-                (value.level === 2 && value.secondId ===item.secondId)||
-                (value.level === 3 && value.thirdId ===item.thirdId)
+            if((value.level === 1 && item.level === 1 && value.firstId ===item.firstId)||
+                (value.level === 2 && item.level === 2 && value.secondId ===item.secondId)||
+                (value.level === 3 && item.level === 3 && value.thirdId ===item.thirdId)
                 ){
                 this.choosemsg.splice(index,1)
                 // console.log(`${value.name}---${value.firstId}---${value.secondId}---${value.thirdId}---${value.level}`)
@@ -511,7 +536,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /*初始状态*/
 ul{
     background-color: #F8F8F8;
@@ -542,8 +567,8 @@ li{
     line-height: 10px;
     border-radius: 5px;
     border: 2px #ccc dashed;
-    margin: 10px 0 10px 10px;
-    padding: 11px;
+    margin: 10px 0 10px 10px !important;
+    padding: 11px  !important;
     position: relative;
     text-align: center;
     cursor:pointer;
@@ -552,8 +577,8 @@ li{
 .isopen{background-color: #E0E0E0}
 .choosechild{border-style: solid;}
 /*选中确认的样式*/
-a{margin-left: -20px;margin-bottom: -22px; display: inline-block; width: 6px;height:2px; background: #fff;line-height: 0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);}
-a:after{content:'/';display:block;width: 12px;height:2px; background: #fff;-webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);}
+a{margin-left: -20px;margin-bottom: -22px; display: inline-block; width: 6px;height:2px; background: #fff!important;line-height: 0;font-size:0;vertical-align: middle;transform: rotate(45deg);}
+a:after{content:'/';display:block;width: 12px;height:2px; background: #fff;transform: rotate(-90deg) translateY(-50%) translateX(50%);}
 .isself{
     width: 0;
     height: 0;
