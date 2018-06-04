@@ -566,7 +566,7 @@ li{
     font-size: 14px;
     line-height: 10px;
     border-radius: 5px;
-    border: 2px #00f dashed;
+    border: 2px #3367D6 dashed;
     margin: 10px 0 10px 10px !important;
     padding: 11px  !important;
     position: relative;
@@ -574,15 +574,15 @@ li{
     cursor:pointer;
 }
 .isinit{border-style: dashed;}
-.isopen{background-color: #05f}
-.choosechild{border-style: solid;}
+.isopen{background-color: #40a9ff}
+.choosechild{border-style: solid;border-color: #3367D6}
 /*选中确认的样式*/
 a{margin-left: -20px;margin-bottom: -22px; display: inline-block; width: 6px;height:2px; background: #fff!important;line-height: 0;font-size:0;vertical-align: middle;transform: rotate(45deg);}
 a:after{content:'/';display:block;width: 12px;height:2px; background: #fff;transform: rotate(-90deg) translateY(-50%) translateX(50%);}
 .isself{
     width: 0;
     height: 0;
-    border-bottom: 21px solid #01f;
+    border-bottom: 21px solid #3367D6;
     border-left: 21px solid transparent;
     position: absolute;
     bottom: 0;
@@ -596,7 +596,7 @@ a:after{content:'/';display:block;width: 12px;height:2px; background: #fff;trans
 }
 .chooselist{
     display: inline-block;
-    background-color: #E4E4E4;
+    background-color: #40a9ff;
     padding: 5px;
     border-radius: 5px;
     margin: 2px;
