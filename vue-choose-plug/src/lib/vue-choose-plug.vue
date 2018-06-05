@@ -506,6 +506,30 @@ export default {
         }
         let newData = addClass(arr);
         return newData;
+    },
+    resetClass(){
+        //重置样式
+        let that = this;
+        let reset = function( arr ){
+            arr.map( ( pro ) => {
+                pro.myClass.choosechild = false;
+                pro.myClass.chooseself = false;
+                pro.myClass.isopen = false;
+                that.show2 = false;
+                that.show3 = false;
+                if( pro.content && pro.content.length > 0 ){
+                    reset ( pro.content )
+                } else {
+                    return pro
+                }
+            })
+            return arr;
+        }
+        let newData = reset(this.myData);
+        return newData;
+    },
+    resetMsg(){
+        this.choosemsg.splice(0,this.choosemsg.length);
     }
 },
 
